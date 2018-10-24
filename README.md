@@ -1,3 +1,1 @@
-# CS4080_Project
-# R Lanugage Group Project
-# Group #9
+# CS4080_Project R Lanugage Group #9 Project
