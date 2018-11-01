@@ -22,7 +22,7 @@ while(TRUE){
   
   if(choice == 1){
     displayRegion()
-    reg <- readline(prompt = "Which region would you like to select?(1 to 53): ")
+    reg <- readline(prompt = "Which region would you like to select?(1 to 54): ")
     makeHist(reg)
   } else if(choice == 2){
     
