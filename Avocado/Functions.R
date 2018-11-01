@@ -37,7 +37,7 @@ displayMenu <- function(options){
 # Display Region with Number
 displayRegion <- function()
 {
-  region2
+  print(region2)
 }
 
 # Make Histogram
