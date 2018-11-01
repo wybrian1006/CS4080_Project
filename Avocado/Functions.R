@@ -13,7 +13,11 @@ inputNumber <- function(prompt){
     if(!is.na(num)){
       break
     }
+    else{
+      print("You entered non-integer... Please try again!!")
+    }
   }
+  return(num)
 }
 
 # Display Menu Options
@@ -23,7 +27,7 @@ displayMenu <- function(options){
   }
   
   # Get a Valid Menu Choice
-  choice <- 0
+  choice = 0
   while (!any(choice == 1:length(options))){
     choice = inputNumber("Please choose a menu item: ")
   }
