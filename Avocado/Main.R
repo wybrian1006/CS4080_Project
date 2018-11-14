@@ -3,7 +3,7 @@
 # Last Date Modified as: 11/14/2018
 #
 # Prompt user to choose menu items, and outputs the graph and datas.
-# Draw histograms(frequency & density), calculate lowest & highest price.
+# Draw histograms(frequency & density), and calculate lowest & highest price.
 ##########################################################################
 
 # Menu runs
@@ -16,8 +16,8 @@ menuItems <- c("Make frequency histogram of a region",
 "Make box plot of a region",
 "Make box plot of a year",
 
-"Calculate the mean average price of a region",
-"Calculate the mean average price of a year",
+"Calculate the mean & median price of a region",
+"Calculate the mean & median price of a year",
 
 "Get the lowest & highest price of a region",
 "Get the lowest & highest price of a year",
@@ -83,15 +83,25 @@ while(TRUE){
   } else if(choice == 6){
     
   } else if(choice == 7){
-    num <- readline(prompt = "Select a region(1 to 54): ")
+    displayRegion()
+    num <- readline(prompt = "Select a region (1~54): ")
     num = as.numeric(num)
-    x = ((num-1)*52 + 1)
-    y = num*52
+    if ((num >= 1) && (num <=54)) {
+      x = ((num-1)*52 + 1)
+      y = num*52
+      meanVal = mean(myvalues$AveragePrice[x:y])
+      medianVal = median(myvalues$AveragePrice[x:y])
+      cat('The mean price is', meanVal, ', and the median price is', medianVal, '.\n\n')
+    } else {
+      cat('You entered invalid number... Please try again!\n\n')
+    }
     
   } else if(choice == 8){
+    displayYear()
     num <- readline(prompt = "Select a year (xxxx): ")
     
   } else if(choice == 9){
+    displayRegion()
     num <- readline(prompt = "Select a region(1 to 54): ")
     num = as.numeric(num)
     if ((num >= 1) && (num <= 54)) {
@@ -101,18 +111,19 @@ while(TRUE){
       lowest = myvalues$AveragePrice[index1]
       index2 = which.max(myvalues$AveragePrice[x:y])
       highest = myvalues$AveragePrice[index2]
-      cat('The lowest price is', lowest, ',and the highest price is', highest, '\n\n')
+      cat('The lowest price is', lowest, ',and the highest price is', highest, '.\n\n')
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
   } else if(choice == 10){
+    displayYear()
     num <- readline(prompt = "Select a year (xxxx): ")
     num = as.numeric(num)
     if ((num >= 2015) && (num <= 2018)) {
       year1 <- (subset(myvalues, year == num))$AveragePrice
       lowest = year1[which.min(year1)]
       highest = year1[which.max(year1)]
-      cat('The lowest price is', lowest, ',and the highest price is', highest, '\n\n')
+      cat('The lowest price is', lowest, ',and the highest price is', highest, '.\n\n')
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
