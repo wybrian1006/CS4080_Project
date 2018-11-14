@@ -1,9 +1,12 @@
 ##########################################################################
 # CS4080_Group_Project
-# Last Date Modified as: 10/31/2018
+# Last Date Modified as: 11/14/2018
 #
-# Draw Histogram, Box plot, etc..
-# To calculate mean value, variant, standard deviation, and average.
+# Declare functions
+# inputNumber: Exception handling of input type
+# displayMenu: Display menu prompt to user
+# displayRegion: Display regions to user for selection in main
+# displayYear: Display years to user for selection in main
 ##########################################################################
 
 # Input Number Exception Handling
@@ -39,17 +42,7 @@ displayRegion <- function()
 {
   print(region2)
 }
-
-# Make Histogram
-makeHist <- function(ap)
+displayYear <- function()
 {
-  hist(ap, main = "Average price of selected region", 
-       xlab = "Average Price of Avocado")
+  cat("2015\t2016\t2017\t2018")
 }
-
-# Make Box Plot
-makeBoxPlot <- function(arg1, arg2)
-{
-  boxplot(arg1, arg2)
-}
-
