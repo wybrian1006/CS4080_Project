@@ -28,6 +28,7 @@ while(TRUE){
   # Display Menu
   choice <- displayMenu(menuItems)
   
+  # Region Frequency Histogram
   if(choice == 1){
     displayRegion()
     num <- readline(prompt = "Select a region (1~54): ")
@@ -41,6 +42,8 @@ while(TRUE){
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
+    
+  # Region Density Histogram
   } else if(choice == 2){
     displayRegion()
     num <- readline(prompt = "Select a region (1~54): ")
@@ -54,6 +57,8 @@ while(TRUE){
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
+  
+  # Year Frequency Histogram
   } else if(choice == 3){
     displayYear()
     num <- readline(prompt = "Select a year (xxxx): ")
@@ -66,6 +71,8 @@ while(TRUE){
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
+    
+  # Year Density Histogram
   } else if(choice == 4){
     displayYear()
     num <- readline(prompt = "Select a year (xxxx): ")
@@ -78,10 +85,35 @@ while(TRUE){
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
+    
+  # Region Boxplot
   } else if(choice == 5){
+    displayRegion()
+    num <- readline(prompt = "Select a region (1~54): ")
+    num = as.numeric(num)
+    if ((num >= 1) && (num <=54)) {
+      x = ((num-1)*52 + 1)
+      y = num*52
+      boxplot(myvalues$AveragePrice[x:y])
+      cat('\n')
+    } else {
+      cat('You entered invalid number... Please try again!\n\n')
+    }
     
+  # Year Boxplot
   } else if(choice == 6){
+    displayYear()
+    num <- readline(prompt = "Select a year (xxxx): ")
+    num = as.numeric(num)
+    if ((num >= 2015) && (num <= 2018)) {
+      year1 <- (subset(myvalues, year == num))$AveragePrice
+      boxplot(year1)
+      cat('\n')
+    } else {
+      cat('You entered invalid number... Please try again!\n\n')
+    }
     
+  # Region mean & median
   } else if(choice == 7){
     displayRegion()
     num <- readline(prompt = "Select a region (1~54): ")
@@ -96,10 +128,21 @@ while(TRUE){
       cat('You entered invalid number... Please try again!\n\n')
     }
     
+  # Year mean & median
   } else if(choice == 8){
     displayYear()
     num <- readline(prompt = "Select a year (xxxx): ")
+    num = as.numeric(num)
+    if ((num >= 2015) && (num <= 2018)) {
+      year1 <- (subset(myvalues, year == num))$AveragePrice
+      meanVal = mean(year1)
+      medianVal = median(year1)
+      cat('The mean price is', meanVal, ',and the median price is', medianVal, '.\n\n')
+    } else {
+      cat('You entered invalid number... Please try again!\n\n')
+    }
     
+  # Region lowest & highest
   } else if(choice == 9){
     displayRegion()
     num <- readline(prompt = "Select a region(1 to 54): ")
@@ -115,6 +158,8 @@ while(TRUE){
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
+    
+  # Year lowest & highest
   } else if(choice == 10){
     displayYear()
     num <- readline(prompt = "Select a year (xxxx): ")
@@ -127,9 +172,12 @@ while(TRUE){
     } else {
       cat('You entered invalid number... Please try again!\n\n')
     }
+    
+  # Exit
   } else if(choice == 11){
     break
   }
 }
+
 # End of Main
 print("Bye... See you again!!")
